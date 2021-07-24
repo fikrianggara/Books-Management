@@ -1,14 +1,17 @@
 let lists = getByClass('list card');//mengambil list buku
 
 function getById(id){//fungsi untuk mengambil elemen berdasarkan id tertentu
+
     return document.getElementById(id);
 }
 
 function getByClass(nama){//fungsi untuk mengambil elemen berdasarkan nama kelas
+
     return document.getElementsByClassName(nama);
 }
 
 function tambahBuku(ids, juduls, penuliss, tahuns, deskripsis, isComplete){
+
     const judul = juduls;
     const penulis = penuliss;
     const tahun = tahuns;
@@ -85,8 +88,8 @@ function tambahBuku(ids, juduls, penuliss, tahuns, deskripsis, isComplete){
     updateList();//update list setelah menambah buku, agar fungsionalitas di sidebar bisa jalan
 }
 
-function makeBuku(){
-    //fungsi yang digunakan saat memasukkan input di form registrasi buku
+function makeBuku(){//fungsi yang digunakan saat memasukkan input di form registrasi buku
+
     const judul = getById('judul');
     const penulis = getById('penulis');
     const tahun = getById('tahun');
@@ -114,6 +117,7 @@ function makeBuku(){
 }
 
 function hapusInput(){//menghapus value input pada form registrasi
+
     const judul = getById('judul');
     const penulis = getById('penulis');
     const tahun = getById('tahun');
@@ -174,7 +178,8 @@ function tambahKeBelumDibaca(item){
     isEmptyContainer();
 }
 
-function hapusBuku(item){
+function hapusBuku(item){//fungsi untuk menghapus buku pada tampilan dan local storage
+
     let id = item.getAttribute('id');
     if(confirm('apakah anda yakin ingin menghapus buku?')){
         deleteBook(id);
@@ -187,7 +192,8 @@ function hapusBuku(item){
 
 }
 
-function clearList(){
+function clearList(){//fungsi untuk menghilangkan list buku dari tampilan
+
     while (getById('search-result-container').childNodes.length>2) {//menghapus list
         getById('search-result-container').removeChild(getById('search-result-container').lastChild);
     }
@@ -285,6 +291,7 @@ function renderList(datas, isSearch){//fungsi untuk merender data dari localStor
 }
 
 function updateList(){//fungsi untuk mengupdate daftar buku
+
     let lists = getByClass('list card');
 
     for(let list of lists){//looping untuk memberi event pada deskripsi list buku yang di click. 
@@ -309,6 +316,7 @@ function updateList(){//fungsi untuk mengupdate daftar buku
 
 function isEmptyContainer(){//funcgsi untuk melakukan pengecekan apakah container kosong
     //jika kosong, sidebar deskripsi disembunyikan, jika tidak, maka dimunculkan
+
     if(getById('uncompleted-container').getElementsByTagName('div').length!=0){
         getById('deskripsi-belum').removeAttribute('hidden');
     } else {
@@ -329,6 +337,7 @@ function isEmptyContainer(){//funcgsi untuk melakukan pengecekan apakah containe
 }
 
 function search(){//fungsi untuk mencari buku berdasarkan judul
+
     while (getById('search-result-container').childNodes.length>2) {//menghapus list
             getById('search-result-container').removeChild(getById('search-result-container').lastChild);
     }
@@ -338,6 +347,7 @@ function search(){//fungsi untuk mencari buku berdasarkan judul
 }
 
 function viewUpdateBuku(item){//fungsi untuk menampilkan data ke form update buku 
+
     let id = item.getAttribute('id');
     let data = getBooks(id,null)[1];//mengambil data dengan id tertentu dari localStorage;
     let judul = data.judul;
@@ -356,8 +366,8 @@ function viewUpdateBuku(item){//fungsi untuk menampilkan data ke form update buk
     getById('form-keterangan').innerText='Update Data Buku';
 }
 
-function updateBuku(){
-    //fungsi untuk update data buku pada localStorage
+function updateBuku(){//fungsi untuk update data buku pada localStorage
+
     const judul = getById('judul');
     const penulis = getById('penulis');
     const tahun = getById('tahun');
